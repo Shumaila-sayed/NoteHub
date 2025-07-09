@@ -3,6 +3,21 @@ import { Container } from 'react-bootstrap';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NewNote from './Pages/NewNote';
 
+export type Note = {
+	id: string
+} & NoteData
+
+export type NoteData = {
+	title: string
+	markdown: string
+	tags: Tag[]
+}
+
+export type Tag = {
+	id: string
+	label: string
+}
+
 const App = () => {
 	return (
 		<Container className='my-4'>
