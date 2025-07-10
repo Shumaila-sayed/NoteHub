@@ -1,6 +1,7 @@
 import { Badge, Button, Col, Row, Stack } from 'react-bootstrap';
 import { useNote } from '../CustomHook/useNote';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from "react-markdown";
 
 const Note = () => {
 	const note = useNote();
@@ -43,6 +44,7 @@ const Note = () => {
 					</Stack>
 				</Col>
 			</Row>
+			<ReactMarkdown>{note.markdown}</ReactMarkdown>
 		</>
 	);
 };
