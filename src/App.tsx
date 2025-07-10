@@ -72,6 +72,24 @@ const App = () => {
 	function addTag(tag: Tag) {
 		setTags(prev => [...prev, tag])
 	}
+
+	function updateTag(id: string, label: string) {
+		setTags((prevTags) => {
+			return prevTags.map((tag) => {
+				if (tag.id === id) {
+					return { ...tag, label };
+				} else {
+					return tag;
+				}
+			});
+		});
+	}
+
+	function deleteTag(id: string) {
+		setTags((prevTags) => {
+			return prevTags.filter((tag) => tag.id !== id);
+		});
+	}
 	
 	return (
 		<Container className='my-4'>
@@ -82,6 +100,8 @@ const App = () => {
 						<NoteList
 							availableTags={tags}
 							notes={notesWithTags}
+							onUpdateTag={updateTag}
+							onDeleteTag={deleteTag}
 						/>
 					}
 				/>
