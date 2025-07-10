@@ -6,6 +6,7 @@ import { useLocalStorage } from './CustomHook/useLocalStorage';
 import { useMemo } from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import NoteList from './Pages/NoteList';
+import NoteLayout from './Components/NoteLayout';
 
 export type Note = {
 	id: string
@@ -63,7 +64,7 @@ const App = () => {
 					path='/new'
 					element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />}
 				/>
-				<Route path='/:id'>
+				<Route path='/:id' element={<NoteLayout notes={notesWithTags} />}>
 					<Route
 						index
 						element={<h1>Show</h1>}
